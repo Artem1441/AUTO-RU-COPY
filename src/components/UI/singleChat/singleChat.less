@@ -1,0 +1,39 @@
+.appSingleChat {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 30px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-height: 60px;
+
+  &Left {
+    width: 25%;
+    padding: 100px 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  &Right {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+
+    & img {
+      object-fit: cover;
+    }
+  }
+
+  &Auto {
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      border-radius: 50%;
+    }
+  }
+}

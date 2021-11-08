@@ -1,0 +1,11 @@
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.footer_rights {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+}

@@ -1,0 +1,45 @@
+.admin_header {
+  display: flex;
+  align-items: center;
+}
+.admin_btns {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px 0;
+  flex-direction: column;
+}
+.admin_btns_container {
+  margin: 50px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+}
+.add_auto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.add_auto_input_url {
+  font-size: 10px;
+}
+.add_auto_marks {
+  padding: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.update_admins {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+}

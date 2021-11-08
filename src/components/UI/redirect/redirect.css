@@ -1,0 +1,13 @@
+.appRedirect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appRedirect .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.appRedirectBtn {
+  margin-top: 16px;
+}

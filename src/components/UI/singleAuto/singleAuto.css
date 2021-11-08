@@ -1,0 +1,41 @@
+.appSingleAuto {
+  margin: 10px 0;
+}
+.appSingleAutoBlock {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+  display: flex;
+  cursor: pointer;
+  transition: 0.45s;
+  width: 100%;
+}
+.appSingleAutoBlock:hover {
+  -webkit-box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+  -moz-box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+  box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+  transition: 0.45s;
+  transform: scale(1.02);
+}
+.appSingleAutoBlock img {
+  border-radius: 10px;
+}
+.appSingleAutoBlockInfo {
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.appSingleAutoBlockInfoMainPrice {
+  margin-top: 10px;
+}
+.appSingleAutoBlockInfoOther {
+  width: 40%;
+}
+.appSingleAutoBlockInfoOtherMain {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+.appSingleAutoBlockInfoOtherComainBlock {
+  margin: 5px 0;
+}

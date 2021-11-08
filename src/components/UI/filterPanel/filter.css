@@ -1,0 +1,13 @@
+.appFilter {
+  margin: 20px 0;
+}
+
+.appFilterContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.appFilterTitle {
+  padding: 0 10px 20px;
+}

@@ -1,0 +1,36 @@
+.show_single_auto_container {
+  padding: 20px 0;
+}
+.show_single_auto_container_main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+  margin: 10px 0 30px;
+}
+.show_single_auto_container_data {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.show_single_auto_container_data_container {
+  width: 30%;
+}
+.show_single_auto_container_data_container_text {
+  display: flex;
+  width: 100%;
+  margin: 12px 0;
+  justify-content: space-between;
+}
+.show_single_auto_container_vendor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.show_single_auto_container_vendor_data {
+  display: flex;
+  align-items: center;
+}

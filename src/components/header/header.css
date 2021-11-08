@@ -1,0 +1,31 @@
+.header {
+  padding: 10px 0;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+}
+.header_info,
+.header_auth {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header_new_messages {
+  position: relative;
+}
+.header_new_messages span {
+  position: absolute;
+  border: 1px solid black;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

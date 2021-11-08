@@ -1,0 +1,30 @@
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.appSearch {
+  position: relative;
+}
+
+.appSearchList {
+  position: absolute;
+  list-style-type: none;
+  background: white;
+  width: 100%;
+  z-index: 200;
+  -webkit-box-shadow: -10px 10px 10px 0px rgba(34, 60, 80, 0.15);
+  -moz-box-shadow: -10px 10px 10px 0px rgba(34, 60, 80, 0.15);
+  box-shadow: -10px 10px 10px 0px rgba(34, 60, 80, 0.15);
+}
+
+.appSearchListItem {
+  width: 100%;
+  padding: 14px;
+  cursor: pointer;
+}

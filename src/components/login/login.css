@@ -1,0 +1,16 @@
+.appLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appLoginAuth {
+  display: flex;
+  justify-content: space-between;
+}
+.appLoginAuth button {
+  display: flex;
+  align-items: center;
+}
+.appLoginAuth button img {
+  margin-right: 10px;
+}

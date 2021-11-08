@@ -1,0 +1,51 @@
+.appSingleAuto {
+  margin: 10px 0;
+  &Block {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    display: flex;
+    cursor: pointer;
+    transition: 0.45s;
+    width: 100%;
+
+    &:hover {
+      -webkit-box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+      -moz-box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+      box-shadow: 2px 4px 80px 5px rgba(34, 60, 80, 0.1);
+      transition: 0.45s;
+      transform: scale(1.02);
+    }
+
+    & img {
+      border-radius: 10px;
+    }
+
+    &Info {
+      padding: 5px 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      &Main {
+        &Price {
+          margin-top: 10px;
+        }
+      }
+
+      &Other {
+        width: 40%;
+        &Main {
+          justify-content: space-between;
+          display: flex;
+          width: 100%;
+        }
+
+        &Comain {
+          &Block {
+            margin: 5px 0;
+          }
+        }
+      }
+    }
+  }
+}

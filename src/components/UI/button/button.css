@@ -1,0 +1,24 @@
+.appBtn {
+  padding: 5px 15px;
+  color: white;
+  font-size: 18px;
+  background-color: transparent;
+  outline: none;
+  border: 0px solid black;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.appBtnSmall {
+  padding: 5px;
+  color: white;
+  font-size: 14px;
+  background-color: transparent;
+  outline: none;
+  border: 0px solid black;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}

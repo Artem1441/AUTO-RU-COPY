@@ -1,0 +1,45 @@
+.transition {
+  width: 100%;
+  &_container {
+    display: flex;
+    &_side {
+      width: 12%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      &_btn {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: white;
+        // cursor: pointer;
+        font-size: 20px;
+
+        &_active {
+          border: 5px solid black;
+        }
+      }
+    }
+    &_main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+
+      &_btns {
+        position: absolute;
+        bottom: 40px;
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

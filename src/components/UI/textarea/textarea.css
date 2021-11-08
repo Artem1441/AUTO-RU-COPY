@@ -1,0 +1,11 @@
+.appTextarea {
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  width: 500px;
+  height: 200px;
+  margin: 20px 0;
+}
+.appTextarea:focus {
+  outline: none;
+}
