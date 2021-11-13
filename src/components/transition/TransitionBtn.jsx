@@ -1,5 +1,7 @@
 import React from "react";
+import { STYLES } from "../../utils/styles";
 import { AppButton } from "../UI/button/AppButton";
+import { AppButtonSmall } from "../UI/button/AppButtonSmall";
 
 export const TransitionBtnNext = ({ dependencyFunc, nextFunc }) => {
   const nextHandlerFunc = async () => {
@@ -7,19 +9,29 @@ export const TransitionBtnNext = ({ dependencyFunc, nextFunc }) => {
     isNext && nextFunc();
   };
 
-  return <AppButton onClick={nextHandlerFunc}>Дальше</AppButton>;
+  return STYLES.WINDOW_WIDTH() > 360 ? (
+    <AppButton onClick={nextHandlerFunc}>Дальше</AppButton>
+  ) : (
+    <AppButtonSmall onClick={nextHandlerFunc}>Дальше</AppButtonSmall>
+  );
 };
 
 export const TransitionBtnBack = ({ backFunc }) => {
-  return <AppButton onClick={backFunc}>Назад</AppButton>;
+  return STYLES.WINDOW_WIDTH() > 360 ? (
+    <AppButton onClick={backFunc}>Назад</AppButton>
+  ) : (
+    <AppButtonSmall onClick={backFunc}>Назад</AppButtonSmall>
+  );
 };
 
-export const TransitionBtnFinish = ({dependencyFunc, finishFunc}) => {
+export const TransitionBtnFinish = ({ dependencyFunc, finishFunc }) => {
   const finishHandlerFunc = async () => {
     const isFinish = await dependencyFunc();
-    // console.log(finishFunc)
-    // finishFunc()
     isFinish && finishFunc();
   };
-  return <AppButton onClick={finishHandlerFunc}>Готово</AppButton>;
+  return STYLES.WINDOW_WIDTH() > 360 ? (
+    <AppButton onClick={finishHandlerFunc}>Готово</AppButton>
+  ) : (
+    <AppButtonSmall onClick={finishHandlerFunc}>Готово</AppButtonSmall>
+  );
 };

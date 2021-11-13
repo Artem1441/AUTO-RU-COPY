@@ -9,5 +9,29 @@
 }
 
 .appFilterTitle {
-  padding: 0 10px 20px;
+  padding: 0 10px 10px;
+}
+
+.appFilterSort {
+  margin-bottom: 15px;
+}
+
+.appFilterContainerBtn {
+  margin: 0 5px;
+}
+
+@media (max-width: 480px) {
+  .appFilterContainer {
+    flex-wrap: wrap-reverse;
+  }
+  .appFilterSort {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 412px) {
+  .appFilterContainer {
+    flex-wrap: wrap;
+    justify-content: start;
+  }
 }

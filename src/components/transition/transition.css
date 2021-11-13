@@ -39,3 +39,27 @@
   display: flex;
   justify-content: space-between;
 }
+@media (max-height: 780px) {
+  .transition_container_side {
+    width: 16%;
+  }
+  .transition_container_side_btn {
+    height: 30px;
+    width: 30px;
+  }
+  .transition_container_side_btn_active {
+    border: 3px solid black;
+  }
+}
+@media (max-width: 500px) {
+  .transition_container_side {
+    width: 16%;
+  }
+  .transition_container_side_btn {
+    height: 30px;
+    width: 30px;
+  }
+  .transition_container_side_btn_active {
+    border: 3px solid black;
+  }
+}

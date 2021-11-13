@@ -39,3 +39,14 @@
 .appSingleAutoBlockInfoOtherComainBlock {
   margin: 5px 0;
 }
+@media (max-width: 400px) {
+  .appSingleAutoBlockInfo {
+    flex-direction: column;
+  }
+  .appSingleAutoBlockInfoOther {
+    width: 100%;
+  }
+  .appSingleAutoBlockInfoOtherMain {
+    flex-direction: column-reverse;
+  }
+}

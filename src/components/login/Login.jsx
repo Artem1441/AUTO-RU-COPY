@@ -18,6 +18,7 @@ import {
   SignUpUserWithEmailAndPassword,
 } from "../../firebase/authFirebase";
 import { AppSwal } from "../../utils/swal";
+import { AppText } from "../UI/text/AppText";
 
 export const Login = () => {
   const history = useHistory();
@@ -100,18 +101,22 @@ export const Login = () => {
           */}
 
           {/* <div style={{ marginRight: 20, marginLeft: 20 }}></div> */}
+          <div className="appLoginBtns">
+            <div className="appLoginBtnsContainer">
+              <AppButton onClick={() => setModalSignIn(true)}>
+                {/* <img src={emailIcon} style={{ height: STYLES.ICON_SIZE }} /> */}
+                Войти
+              </AppButton>
+            </div>
 
-          <AppButton onClick={() => setModalSignIn(true)}>
-            <img src={emailIcon} style={{ height: STYLES.ICON_SIZE }} />
-            Войти через email
-          </AppButton>
-
-          <div style={{ marginRight: 20, marginLeft: 20 }}></div>
-
-          <AppButton onClick={() => setModalSignUp(true)}>
-            <img src={userIcon} style={{ height: STYLES.ICON_SIZE }} />
-            Зарегистрироваться
-          </AppButton>
+            {/* <div style={{ marginRight: 20, marginLeft: 20 }}></div> */}
+            <div className="appLoginBtnsContainer">
+              <AppButton onClick={() => setModalSignUp(true)}>
+                {/* <img src={userIcon} style={{ height: STYLES.ICON_SIZE }} /> */}
+                Зарегистрироваться
+              </AppButton>
+            </div>
+          </div>
         </div>
       </div>
     </div>

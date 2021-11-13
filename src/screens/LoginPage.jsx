@@ -11,7 +11,7 @@ export const LoginPage = () => {
   return (
     <div>
       <Header showAuth={false} />
-      <Navbar />
+      <Navbar showAuth={false}/>
       <Login />
     </div>
   );

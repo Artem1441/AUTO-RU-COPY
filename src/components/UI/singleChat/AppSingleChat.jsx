@@ -40,16 +40,34 @@ export const AppSingleChat = ({ action, db, index }) => {
           }
           style={{ border: STYLES.BORDER_DEFAULT_STYLE }}
         >
-          <div className="appSingleChatLeft" style={{ background: STYLES.RED }}>
+          {/* {STYLES.WINDOW_WIDTH() > 500 && ( */}
+          <div
+            className="appSingleChatLeft"
+            style={{
+              background: STYLES.WINDOW_WIDTH() > 500 ? STYLES.RED : "",
+            }}
+          >
             <Avatar data={data.UserData.ImageUrl} />
-            <AppText>{data.UserData.Name}</AppText>
+            <AppText
+              style={{ fontSize: STYLES.WINDOW_WIDTH() > 500 ? 16 : 12 }}
+            >
+              {data.UserData.Name}
+            </AppText>
           </div>
+          {/* )} */}
           <div className="appSingleChatRight">
+            {/* {STYLES.WINDOW_WIDTH() < 500 && (
+              <div>
+                <Avatar data={data.UserData.ImageUrl} />
+                <AppText style={{ fontSize: 14 }}>{data.UserData.Name}</AppText>
+              </div>
+            )} */}
             {data.Status ? (
               <AppText
                 style={{
                   fontSize: STYLES.MESSAGE_SINGLE_CHAT_FONT_SIZE,
                   color: "rgba(0,0,0,0.6)",
+                  marginRight: STYLES.WINDOW_WIDTH() > 500 ? 0 : 20,
                 }}
               >
                 {data.LastMessage}

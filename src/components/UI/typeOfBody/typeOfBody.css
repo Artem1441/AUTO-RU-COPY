@@ -21,3 +21,24 @@
 .appTypeOfBodyActive {
   background: rgb(245, 245, 245);
 }
+
+@media (max-width: 800px) {
+  .appTypeOfBody {
+    width: 180px;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .appTypeOfBody {
+    width: 170px;
+    padding: 6px 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .appTypeOfBody {
+    width: 160px;
+    padding: 4px 0;
+  }
+}

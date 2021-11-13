@@ -16,3 +16,14 @@ a {
   padding: 0 10px;
   margin: 0 auto;
 }
+
+select {
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}

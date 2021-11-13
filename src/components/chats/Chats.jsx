@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { PATHS } from "../../utils/paths";
 import { AppSingleChat } from "../UI/singleChat/AppSingleChat";
 import { AppTitle } from "../UI/titles/AppTitle";
+import { STYLES } from "../../utils/styles";
 
 export const Chats = ({ myId }) => {
   const [countChatsArr, setCountChatsArr] = useState([]);
@@ -54,7 +55,9 @@ export const Chats = ({ myId }) => {
     <div className="chats">
       <div className="container">
         <div className="chats_title">
-          <AppTitle>Ваши сообщения</AppTitle>
+          <AppTitle style={{ fontSize: STYLES.WINDOW_WIDTH() > 500 ? 24 : 20 }}>
+            Ваши сообщения
+          </AppTitle>
         </div>
         {/* {console.log(countChatsArr)} */}
         {countChatsArr.map((index) => (

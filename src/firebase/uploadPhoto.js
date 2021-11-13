@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { AppButton } from "../components/UI/button/AppButton";
+import { AppButtonSmall } from "../components/UI/button/AppButtonSmall";
 import { storage } from "../index";
 import { store } from "../store";
+import { STYLES } from "../utils/styles";
 import { AppInput } from "./../components/UI/input/AppInput";
 
 const uniqId = Math.random().toString(36).substr(2, 9);
@@ -55,13 +57,23 @@ export class ImageUpload extends Component {
   render() {
     return (
       <div>
-        <AppButton
-          onClick={() => {
-            document.getElementById("fileInput").click();
-          }}
-        >
-          Выбрать фото
-        </AppButton>
+        {STYLES.WINDOW_WIDTH() > 480 ? (
+          <AppButton
+            onClick={() => {
+              document.getElementById("fileInput").click();
+            }}
+          >
+            Выбрать фото
+          </AppButton>
+        ) : (
+          <AppButtonSmall
+            onClick={() => {
+              document.getElementById("fileInput").click();
+            }}
+          >
+            Выбрать фото
+          </AppButtonSmall>
+        )}
         <AppInput
           type="file"
           id="fileInput"

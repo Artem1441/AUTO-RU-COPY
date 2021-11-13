@@ -28,3 +28,22 @@
   justify-content: space-around;
   align-items: center;
 }
+
+@media (max-width: 500px) {
+  .appModelTitle {
+    padding: 4px;
+  }
+  .appModel {
+    padding: 2px;
+    margin: 2px 0;
+  }
+  .appModelBtns {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .appModelTitle {
+    padding: 2px 4px;
+  }
+}

@@ -27,7 +27,7 @@ export const AppMark = ({
         border: STYLES.BORDER_DEFAULT_STYLE,
         display: visible ? "flex" : "none",
       }}
-      onClick={() => setCurrentMark(mark._id, mark.MarkTitle, )}
+      onClick={() => setCurrentMark(mark._id, mark.MarkTitle)}
     >
       {isImg && (
         <img
@@ -36,7 +36,13 @@ export const AppMark = ({
           style={{ height: STYLES.MARK_SIZE }}
         />
       )}
-      {isTitle && <AppText style={{ fontSize: 12 }}>{mark.MarkTitle}</AppText>}
+      {isTitle & (STYLES.WINDOW_WIDTH() > 360) ? (
+        <AppText style={{ fontSize: STYLES.WINDOW_WIDTH() > 600 ? 12 : 10 }}>
+          {mark.MarkTitle}
+        </AppText>
+      ) : (
+        <span style={{ display: "none" }}></span>
+      )}
       <div className="appMarkBtn">
         {isUpdate && (
           <AppButtonSmall onClick={() => updateFunc(mark._id)}>

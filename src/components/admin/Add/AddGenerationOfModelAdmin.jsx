@@ -110,6 +110,7 @@ export const AddGenerationAdminAutoModel = () => {
   );
 
   useEffect(() => {
+    console.log(generationMarkId);
     if (autoGeneationsIdCategory) {
       dispatch(addGenerationModelsArrayRefreshAction());
       ReadAllInFirebaseWithTwoQueries(
@@ -119,7 +120,7 @@ export const AddGenerationAdminAutoModel = () => {
       )
         .then((data) => {
           data.forEach((dataItem) => {
-            console.log(dataItem.data());
+            // console.log(dataItem.data());
             dispatch(
               addGenerationModelsArrAction({
                 ...dataItem.data(),
@@ -255,6 +256,7 @@ export const AddGenerationAdminAutoTypeOfBody = () => {
       <div className="add_auto_marks">
         {typeOfBodyArrFromDB.length > 0 ? (
           typeOfBodyArrFromDB.map((typeOfBody, index) => {
+            console.log(typeOfBody._id, typeOfBodyArrIDS)
             return (
               <AppTypeOfBody
                 key={index}

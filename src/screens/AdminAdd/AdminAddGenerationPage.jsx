@@ -56,38 +56,43 @@ export const AdminAddGenerationPage = () => {
         params.modelIdCategory,
         params.idModel
       ).then((data) => {
-        console.log(
-          params.markIdCategory,
-          params.idMark,
-          params.modelIdCategory,
-          params.idModel
-        );
+        // console.log(
+        //   params.markIdCategory,
+        //   params.idMark,
+        //   params.modelIdCategory,
+        //   params.idModel
+        // );
         data.forEach((dataItem) => {
-          console.log(dataItem.data());
-          let markId = dataItem.data().GenerationMarkId;
-          let mark = dataItem.data().GenerationMark;
-          let modelId = dataItem.data().GenerationModelId;
-          let model = dataItem.data().GenerationModel;
-          dispatch(addGenerationIdCategoryAction(params.markIdCategory));
-          dispatch(addGenerationMarkAndIdAction({ markId, mark }));
-          dispatch(addGenerationModelAndIdAction({ modelId, model }));
-          dispatch(addGenerationIdModelCategoryAction(params.modelIdCategory));
-          JSON.parse(dataItem.data().GenerationTypeOfBody).map((typeOfBody) => {
-            console.log(typeOfBody);
-            dispatch(addGenerationTypeOfBodyArrIDSAction(typeOfBody));
-          });
-          dispatch(addGenerationModelsArrayRefreshAction());
-          dispatch(addGenerationTitleAction(dataItem.data().GenerationTitle));
-          dispatch(
-            addGenerationTransliterationAction(
-              dataItem.data().GenerationTransliteration
-            )
-          );
-          dispatch(addGenerationDescriptionAction(dataItem.data().Description));
-          dispatch(addGenerationEndDateAction(dataItem.data().EndYear));
-          dispatch(addGenerationStartDateAction(dataItem.data().StartYear));
-          dispatch(addGenerationImageUrlAction(dataItem.data().ImageUrl));
-          // }
+          if (dataItem.id === params.id) {
+            let markId = dataItem.data().GenerationMarkId;
+            let mark = dataItem.data().GenerationMark;
+            let modelId = dataItem.data().GenerationModelId;
+            let model = dataItem.data().GenerationModel;
+            dispatch(addGenerationIdCategoryAction(params.markIdCategory));
+            dispatch(addGenerationMarkAndIdAction({ markId, mark }));
+            dispatch(addGenerationModelAndIdAction({ modelId, model }));
+            dispatch(
+              addGenerationIdModelCategoryAction(params.modelIdCategory)
+            );
+            JSON.parse(dataItem.data().GenerationTypeOfBody).map(
+              (typeOfBody) => {
+                dispatch(addGenerationTypeOfBodyArrIDSAction(typeOfBody));
+              }
+            );
+            dispatch(addGenerationModelsArrayRefreshAction());
+            dispatch(addGenerationTitleAction(dataItem.data().GenerationTitle));
+            dispatch(
+              addGenerationTransliterationAction(
+                dataItem.data().GenerationTransliteration
+              )
+            );
+            dispatch(
+              addGenerationDescriptionAction(dataItem.data().Description)
+            );
+            dispatch(addGenerationEndDateAction(dataItem.data().EndYear));
+            dispatch(addGenerationStartDateAction(dataItem.data().StartYear));
+            dispatch(addGenerationImageUrlAction(dataItem.data().ImageUrl));
+          }
         });
       });
     }

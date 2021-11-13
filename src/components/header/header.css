@@ -29,3 +29,26 @@
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 780px) {
+  .header_info {
+    max-width: 300px;
+    justify-content: space-around;
+  }
+}
+@media (max-width: 580px) {
+  .header_auth {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 520px) {
+  .header {
+    padding: 5px 0;
+  }
+}
+@media (max-width: 480px) {
+  .header_info {
+    max-width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+}

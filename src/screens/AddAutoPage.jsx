@@ -239,6 +239,7 @@ export const AddAutoPage = () => {
           return data.size;
         })
         .then((countAutoId) => {
+          debugger;
 
           CreateInFirebase("ClientsAutoForSale", {
             MarkId: markId,

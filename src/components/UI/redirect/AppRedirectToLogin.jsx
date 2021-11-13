@@ -18,7 +18,9 @@ export const AppRedirectToLogin = ({ text }) => {
     >
       <div className="container">
         <div className="appRedirectText">
-          <AppText>Для {text} необходимо войти в систему</AppText>
+          <AppText style={{ textAlign: "center" }}>
+            Для {text} необходимо войти в систему
+          </AppText>
         </div>
         <div className="appRedirectBtn">
           <AppButton onClick={() => history.push(PATHS.LOGIN)}>

@@ -28,6 +28,7 @@ import {
   clientGetDriveUnitAction,
   clientGetTransmissionAction,
   clientGetMotorAction,
+  clientGetGenerationCurrentObjAction,
 } from "../../store/client/addAutoReducer";
 import { AppGeneration } from "../UI/generation/AppGeneration";
 import { AppLoader } from "../UI/loader/AppLoader";
@@ -47,6 +48,7 @@ import { AppInput } from "./../UI/input/AppInput";
 import { AppTextarea } from "./../UI/textarea/AppTextarea";
 import { AppText } from "../UI/text/AppText";
 import { AppSelectOption } from "./../UI/select-option/AppSelectOption";
+import { STYLES } from "../../utils/styles";
 
 export const ClientGetMarkAndMarkId = () => {
   const dispatch = useDispatch();
@@ -74,9 +76,16 @@ export const ClientGetMarkAndMarkId = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите марку</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите марку
+      </AppTitle>
 
-      <div className="add_auto_marks">
+      <div
+        className="add_auto_marks"
+        style={{ maxHeight: STYLES.ADD_AUTO_MARKS_HEIGHT }}
+      >
         {markArr.length > 0 ? (
           markArr.map((mark, index) => {
             return (
@@ -125,9 +134,16 @@ export const ClientGetModelAndModelId = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите модель</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите модель
+      </AppTitle>
 
-      <div className="add_auto_marks">
+      <div
+        className="add_auto_marks"
+        style={{ maxHeight: STYLES.ADD_AUTO_MARKS_HEIGHT }}
+      >
         {modelArr.length > 0 ? (
           modelArr.map((model, index) => {
             return (
@@ -172,9 +188,14 @@ export const ClientGetGenerationAndGenerationId = () => {
     )
       .then((data) => {
         data.forEach((dataItem) => {
+          // if (generationId === dataItem.id) {
           dispatch(
-            clientGetGenerationAction({ ...dataItem.data(), _id: dataItem.id })
+            clientGetGenerationAction({
+              ...dataItem.data(),
+              _id: dataItem.id,
+            })
           );
+          // }
         });
       })
       .catch((err) => {
@@ -183,23 +204,40 @@ export const ClientGetGenerationAndGenerationId = () => {
   }, []);
 
   const setCurrentGeneration = (
-    generationId,
     generation,
-    img,
+    generationId,
     generationCollection
   ) => {
+    // getSelfId ? generation.GenerationModelId : generation._id,
+    // generation.GenerationTitle,
+    // generation.ImageUrl,
+    // !getSelfId ? generation.GenerationModelId : generation._id,
+    // const generationTitle = generation.GenerationTitle;
+    // console.log(generationTitle);
+
     dispatch(
-      clientGetGenerationAndGenerationIdAction({ generationId, generation })
+      clientGetGenerationAndGenerationIdAction({
+        generationId,
+        generation: generation.GenerationTitle,
+      })
     );
     dispatch(clientGetGenerationCollectionAction(generationCollection));
-    dispatch(clientGetDefaultImageAction(img));
+    dispatch(clientGetDefaultImageAction(generation.ImageUrl));
+    dispatch(clientGetGenerationCurrentObjAction(generation));
   };
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите поколение вашего автомобиля</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите поколение вашего автомобиля
+      </AppTitle>
 
-      <div className="add_auto_marks">
+      <div
+        className="add_auto_marks"
+        style={{ maxHeight: STYLES.ADD_AUTO_MARKS_HEIGHT }}
+      >
         {generationArr.length > 0 ? (
           generationArr.map((generation, index) => {
             return (
@@ -222,8 +260,8 @@ export const ClientGetGenerationAndGenerationId = () => {
 
 export const ClientGetTypeOfBody = () => {
   const dispatch = useDispatch();
-  const generationArr = useSelector(
-    (state) => state.clientAddAuto.generationArr
+  const generationCurrentObj = useSelector(
+    (state) => state.clientAddAuto.generationCurrentObj
   );
   const typeOfBodyArrFromDB = useSelector(
     (state) => state.clientAddAuto.typeOfBodyArrFromDB
@@ -232,6 +270,7 @@ export const ClientGetTypeOfBody = () => {
 
   useEffect(() => {
     dispatch(clientGetTypeOfBodyArrFromDBRefreshAction());
+
     ReadAllInFirebase("TypeOfBody")
       .then((data) => {
         data.forEach((dataItem) => {
@@ -254,12 +293,16 @@ export const ClientGetTypeOfBody = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите тип кузова авто</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите тип кузова авто
+      </AppTitle>
       <div className="add_auto_marks">
         {typeOfBodyArrFromDB.length > 0 ? (
           typeOfBodyArrFromDB.map((type, index) => {
             if (
-              JSON.parse(generationArr[0].GenerationTypeOfBody).includes(
+              JSON.parse(generationCurrentObj.GenerationTypeOfBody).includes(
                 type._id
               )
             ) {
@@ -287,7 +330,11 @@ export const ClientGetDriveUnit = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите привод автомобиля</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите привод автомобиля
+      </AppTitle>
 
       <AppSelectOption
         arr={typeOfDriveUnit}
@@ -305,7 +352,11 @@ export const ClientGetTransmission = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите коробку передач</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите коробку передач
+      </AppTitle>
 
       <AppSelectOption
         arr={typeOfTransmission}
@@ -323,7 +374,11 @@ export const ClientGetMotor = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите коробку передач</AppTitle>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите коробку передач
+      </AppTitle>
 
       <AppSelectOption
         arr={typeOfMotor}
@@ -341,8 +396,21 @@ export const ClientMultiplyImageUpload = () => {
 
   return (
     <div className="add_auto">
-      <AppTitle>Выберите фотографии вашего автомобиля</AppTitle>
-      <AppText>
+      <AppTitle
+        style={{ fontSize: STYLES.TRANSITION_TITLE_SIZE, textAlign: "center" }}
+      >
+        Выберите фотографии вашего автомобиля
+      </AppTitle>
+      <AppText
+        style={{
+          fontSize:
+            STYLES.WINDOW_WIDTH() > 800
+              ? 15
+              : STYLES.WINDOW_WIDTH() > 800
+              ? 14
+              : 12,
+        }}
+      >
         Если не хотите выставлять фотографии своего автомобиля, Вы всегда можете
         выбрать дефолтное (системное) фото
       </AppText>
@@ -390,7 +458,14 @@ export const ClientAddDateOfCar = () => {
   return (
     <div className="add_auto">
       <div className="add_auto_title">
-        <AppTitle>Добавьте год выпуска вашего автомобиля</AppTitle>
+        <AppTitle
+          style={{
+            fontSize: STYLES.TRANSITION_TITLE_SIZE,
+            textAlign: "center",
+          }}
+        >
+          Добавьте год выпуска вашего автомобиля
+        </AppTitle>
       </div>
       <div className="add_auto_input">
         <AppDate
@@ -411,7 +486,14 @@ export const ClientPowerOfCar = () => {
   return (
     <div className="add_auto">
       <div className="add_auto_title">
-        <AppTitle>Добавьте кол-во лошадек под капотом (в л.с.)</AppTitle>
+        <AppTitle
+          style={{
+            fontSize: STYLES.TRANSITION_TITLE_SIZE,
+            textAlign: "center",
+          }}
+        >
+          Добавьте кол-во лошадек под капотом (в л.с.)
+        </AppTitle>
       </div>
       <div className="add_auto_input">
         <AppInput
@@ -434,7 +516,14 @@ export const ClientMilage = () => {
   return (
     <div className="add_auto">
       <div className="add_auto_title">
-        <AppTitle>Добавьте пробег под капотом (в км)</AppTitle>
+        <AppTitle
+          style={{
+            fontSize: STYLES.TRANSITION_TITLE_SIZE,
+            textAlign: "center",
+          }}
+        >
+          Добавьте пробег под капотом (в км)
+        </AppTitle>
       </div>
       <div className="add_auto_input">
         <AppInput
@@ -463,7 +552,14 @@ export const ClientDescr = () => {
   return (
     <div className="add_auto">
       <div className="add_auto_title">
-        <AppTitle>Добавьте описание</AppTitle>
+        <AppTitle
+          style={{
+            fontSize: STYLES.TRANSITION_TITLE_SIZE,
+            textAlign: "center",
+          }}
+        >
+          Добавьте описание
+        </AppTitle>
       </div>
       <div className="add_auto_input">
         <AppTextarea
@@ -484,7 +580,14 @@ export const ClientAutoPrice = () => {
   return (
     <div className="add_auto">
       <div className="add_auto_title">
-        <AppTitle>Добавьте стоимость автомобиля (в рублях)</AppTitle>
+        <AppTitle
+          style={{
+            fontSize: STYLES.TRANSITION_TITLE_SIZE,
+            textAlign: "center",
+          }}
+        >
+          Добавьте стоимость автомобиля (в рублях)
+        </AppTitle>
       </div>
       <div className="add_auto_input">
         <AppInput

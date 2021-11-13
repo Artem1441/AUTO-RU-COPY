@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 80%;
 
   &_input {
     &_url {
@@ -38,11 +38,13 @@
   }
 
   &_marks {
-    padding: 50px;
+    padding: 10px 40px 20px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    overflow-y: auto;
+    margin: 5px;
   }
 }
 
@@ -52,4 +54,26 @@
   align-items: flex-start;
   padding: 20px;
   width: 100%;
+}
+
+@media (max-width: 800px) {
+  .add {
+    &_auto {
+      width: 100%;
+      &_marks {
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .add {
+    &_auto {
+      width: 100%;
+      &_marks {
+        padding: 0;
+      }
+    }
+  }
 }

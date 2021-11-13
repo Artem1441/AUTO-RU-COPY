@@ -29,3 +29,29 @@
   justify-content: space-around;
   align-items: center;
 }
+
+@media (max-width: 600px) {
+  .appMark {
+    width: 60px;
+    padding: 2px 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .appMark {
+    margin: 2px;
+  }
+}
+
+@media (max-width: 360px) {
+  .appMark {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+  }
+  .appMarkBtn {
+    margin-top: 0;
+  }
+}

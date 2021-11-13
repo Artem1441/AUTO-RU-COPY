@@ -33,7 +33,6 @@ export const GetAllSalesCarsFromDBWithLimit = (
   } else {
     if (!params.markId) {
       return new Promise(function (resolve, reject) {
-        console.log("aaa");
         firebase
           .firestore()
           .collection("ClientsAutoForSale")

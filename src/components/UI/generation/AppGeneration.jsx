@@ -18,6 +18,21 @@ export const AppGeneration = ({
   getSelfId = false,
 }) => {
   const [visible, setVisible] = useState(true);
+  const [isLoad, setIsLoad] = useState(false);
+
+  const loadStyles = {
+    objectFit: "cover",
+    minWidth: (STYLES.AUTO_PICTURE_SIZE * 4) / 3,
+    maxWidth: (STYLES.AUTO_PICTURE_SIZE * 4) / 3,
+    height: STYLES.AUTO_PICTURE_SIZE,
+    objectFit: "cover",
+  };
+  const notLoadStyles = {
+    minWidth: (STYLES.AUTO_PICTURE_SIZE * 4) / 3,
+    maxWidth: (STYLES.AUTO_PICTURE_SIZE * 4) / 3,
+    height: STYLES.AUTO_PICTURE_SIZE,
+    background: STYLES.RED,
+  };
 
   return (
     <div
@@ -30,18 +45,19 @@ export const AppGeneration = ({
       }}
       onClick={() => {
         setCurrentGeneration(
+          generation,
           getSelfId ? generation.GenerationModelId : generation._id,
-          generation.GenerationTitle,
-          generation.ImageUrl,
-          !getSelfId ? generation.GenerationModelId : generation._id,
-
+          !getSelfId ? generation.GenerationModelId : generation._id
         );
       }}
     >
       <img
         src={generation.ImageUrl}
         alt={generation.GenerationTitle}
-        style={{ height: STYLES.AUTO_PICTURE_SIZE }}
+        style={isLoad ? loadStyles : notLoadStyles}
+        onLoad={() => {
+          setIsLoad(true);
+        }}
       />
 
       <AppText className="appGenerationTitle" style={{ fontSize: 12 }}>

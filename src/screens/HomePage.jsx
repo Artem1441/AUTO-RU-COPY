@@ -15,11 +15,12 @@ import { setParamsAction } from "./../store/client/getAutoReducer";
 import { AppFilterPanel } from "../components/UI/filterPanel/AppFilterPanel";
 import { Footer } from "./../components/footer/Footer";
 import { AppTitle } from "./../components/UI/titles/AppTitle";
+import { reloadCountAutoIdAction } from "../store/reloadReducer";
 
 export const HomePage = () => {
   const location = useLocation();
-  console.log(location.state);
   const [doItAgain, setDoItAgain] = useState(0);
+  const [isLoader, setIsLoader] = useState(true);
   const params = useParams();
   const dispatch = useDispatch();
   const autoArr = useSelector((state) => state.clientGetAuto.autoArr);
@@ -42,6 +43,13 @@ export const HomePage = () => {
       data.forEach((dataItem) => {
         dispatchArrFunc(dataItem);
       });
+
+      if (data.docs.length === 0) {
+        setIsLoader(false);
+      } else {
+        setIsLoader(true);
+      }
+
       setDoItAgain(1);
     });
   }, [markId, modelId, generationId, doItAgain]);
@@ -49,6 +57,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     document.title = `Koz Auto`;
+    dispatch(reloadCountAutoIdAction());
   }, []);
 
   const dispatchArrFunc = (dataItem) => {
@@ -60,8 +69,8 @@ export const HomePage = () => {
     <div>
       <Header />
       <Navbar />
-      {markId && <AppFilterPanel name={location.state}/>}
-      <AutoList autoData={autoArr} />
+      {markId && <AppFilterPanel name={location.state} isLoad={isLoader} />}
+      <AutoList autoData={autoArr} isLoad={isLoader} />
       <ShowMore />
       {/* <Footer /> */}
     </div>

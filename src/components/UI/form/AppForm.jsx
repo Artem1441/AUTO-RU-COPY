@@ -4,6 +4,8 @@ import { AppButton } from "../button/AppButton";
 import "./form.css";
 import { ImageUpload } from "./../../../firebase/uploadPhoto";
 import { AppText } from "../text/AppText";
+import { STYLES } from "../../../utils/styles";
+import { AppButtonSmall } from "./../button/AppButtonSmall";
 
 export const AppForm = ({ loginWithEmail, signIn }) => {
   const [name, setName] = useState("");
@@ -13,13 +15,11 @@ export const AppForm = ({ loginWithEmail, signIn }) => {
 
   const registerAction = (e) => {
     e.preventDefault();
-    console.log(signIn)
     signIn
       ? loginWithEmail(email, password)
       : loginWithEmail(email, password, name, imageUrl);
   };
 
-  console.log(imageUrl);
 
   return (
     <div>
@@ -30,7 +30,11 @@ export const AppForm = ({ loginWithEmail, signIn }) => {
       )}
       {!signIn && (
         <div className="centerContainer">
-          {imageUrl === "" && <AppText>Добавьте аватар (необязательно)</AppText>}
+          {imageUrl === "" && (
+            <AppText style={{ textAlign: "center" }}>
+              Добавьте аватар (необязательно)
+            </AppText>
+          )}
           <ImageUpload
             dispatchFunc={setImageUrl}
             folderName="users"
@@ -66,9 +70,15 @@ export const AppForm = ({ loginWithEmail, signIn }) => {
       </div>
 
       <div className="formConatiner">
-        <AppButton onClick={registerAction} style={{ margin: 0 }}>
-          {signIn ? "Войти" : "Зарегистрироваться"}
-        </AppButton>
+        {STYLES.WINDOW_WIDTH() > 480 ? (
+          <AppButton onClick={registerAction} style={{ margin: 0 }}>
+            {signIn ? "Войти" : "Зарегистрироваться"}
+          </AppButton>
+        ) : (
+          <AppButtonSmall onClick={registerAction} style={{ margin: 0 }}>
+            {signIn ? "Войти" : "Зарегистрироваться"}
+          </AppButtonSmall>
+        )}
       </div>
     </div>
   );

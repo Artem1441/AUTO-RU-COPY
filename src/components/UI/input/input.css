@@ -9,3 +9,19 @@
 .appInput:focus {
   outline: none;
 }
+
+@media (max-width: 780px) {
+  .appInput {
+    width: 200px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 780px) {
+  .appInput {
+    width: 150px;
+    font-size: 12px;
+    padding: 8px;
+  }
+}

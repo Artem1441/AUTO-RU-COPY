@@ -4,10 +4,17 @@ import "./textarea.css";
 
 export const AppTextarea = (props) => {
   return (
-    <input
+    <textarea
       {...props}
       className="appTextarea"
+      wrap="hard"
       style={{ border: STYLES.BORDER_DEFAULT_STYLE }}
-    />
+    ></textarea>
   );
 };
+
+// {...props}
+// className="appTextarea"
+// wrap="hard"
+// style={{ border: STYLES.BORDER_DEFAULT_STYLE }}>
+//   <textarea />

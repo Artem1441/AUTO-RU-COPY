@@ -5,11 +5,13 @@ const GET_GENERATION_AND_GENERATION_ID = "GET_GENERATION_AND_GENERATION_ID";
 const GET_MARK_ARR = "GET_MARK_ARR";
 const GET_MODEL_COLLECTION = "GET_MODEL_COLLECTION";
 const GET_MODEL_ARR = "GET_MODEL_ARR";
+//
 const GET_GENERATION_COLLECTION = "GET_GENERATION_COLLECTION";
 const GET_GENERATION_ARR = "GET_GENERATION_ARR";
 const GET_MARK_ARR_REFRESH = "GET_MARK_ARR_REFRESH";
 const GET_MODEL_ARR_REFRESH = "GET_MODEL_ARR_REFRESH";
 const GET_GENERATION_ARR_REFRESH = "GET_GENERATION_ARR_REFRESH";
+const GET_GENERATION_CURRENT_ARR = "GET_GENERATION_CURRENT_ARR";
 //
 const GET_IMAGES_ARR = "GET_IMAGES_ARR";
 const GET_IMAGES_ARR_REFRESH = "GET_IMAGES_ARR_REFRESH";
@@ -51,6 +53,7 @@ const defaultState = {
   generationArr: [],
   generationId: "",
   generation: "",
+  generationCurrentObj: {},
   //
   imagesArr: [],
   defaultImage: "",
@@ -121,6 +124,7 @@ export const addAutoReducer = (state = defaultState, action) => {
         modelCollection: action.payload,
       };
     }
+    //
     case GET_GENERATION_ARR: {
       return {
         ...state,
@@ -150,6 +154,13 @@ export const addAutoReducer = (state = defaultState, action) => {
       return {
         ...state,
         generationArr: [],
+      };
+    }
+
+    case GET_GENERATION_CURRENT_ARR: {
+      return {
+        ...state,
+        generationCurrentObj: action.payload,
       };
     }
 
@@ -316,6 +327,10 @@ export const clientGetModelRefreshArrAction = () => ({
 });
 export const clientGetGenerationRefreshAction = () => ({
   type: GET_GENERATION_ARR_REFRESH,
+});
+export const clientGetGenerationCurrentObjAction = (obj) => ({
+  type: GET_GENERATION_CURRENT_ARR,
+  payload: obj,
 });
 
 //

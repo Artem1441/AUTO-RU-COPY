@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import { PATHS } from "../../utils/paths";
 import { useSelector } from "react-redux";
 import { Avatar } from "../avatar/Avatar";
+import { AppButtonSmall } from "../UI/button/AppButtonSmall";
 
 export const ShowSingleAutoData = ({ data }) => {
   const history = useHistory();
@@ -21,13 +22,17 @@ export const ShowSingleAutoData = ({ data }) => {
 
   const leftTextStyles = {
     color: "rgba(0,0,0,0.4)",
-    fontSize: 16,
+    fontSize:
+      STYLES.WINDOW_WIDTH() > 800 ? 16 : STYLES.WINDOW_WIDTH() > 500 ? 14 : 12,
     display: "flex",
+    textAlign: "justify",
   };
 
   const rightTextStyles = {
     color: "rgba(0,0,0,0.6)",
-    fontSize: 16,
+    textAlign: "justify",
+    fontSize:
+      STYLES.WINDOW_WIDTH() > 800 ? 16 : STYLES.WINDOW_WIDTH() > 500 ? 14 : 12,
     marginLeft: 10,
   };
 
@@ -79,12 +84,14 @@ export const ShowSingleAutoData = ({ data }) => {
           <div className="show_single_auto_container">
             <div className="show_single_auto_container_main">
               <AppTitle
-                style={{ fontSize: STYLES.SINGLE_AUTO_MAIN_FON_SIZE_TEXT }}
+                style={{ fontSize: STYLES.SINGLE_AUTO_MAIN_FONT_SIZE_TEXT }}
               >
                 {data.Mark} {data.Model} {data.Generation}
               </AppTitle>
               <AppTitle
-                style={{ fontSize: STYLES.SINGLE_AUTO_MAIN_FON_SIZE_TEXT - 6 }}
+                style={{
+                  fontSize: STYLES.SINGLE_AUTO_MAIN_FONT_SIZE_TEXT - 4,
+                }}
               >
                 {String(data.Price)
                   .replace(/\s/g, "")
@@ -132,20 +139,26 @@ export const ShowSingleAutoData = ({ data }) => {
               </div>
 
               <div className="show_single_auto_container_data_slider">
-                <Slider imagesArr={data.ImagesArr} isDelete={false} />
+                <Slider
+                  imagesArr={data.ImagesArr}
+                  isDelete={false}
+                  isHugeSlider={true}
+                />
               </div>
             </div>
 
             <div className="show_single_auto_container_main">
               <AppTitle
-                style={{ fontSize: STYLES.SINGLE_AUTO_MAIN_FON_SIZE_TEXT - 4 }}
+                style={{ fontSize: STYLES.SINGLE_AUTO_MAIN_FONT_SIZE_TEXT - 4 }}
               >
                 Комментарий продавца
               </AppTitle>
             </div>
 
             <div className="show_single_auto_container_data_container_text">
-              <AppText style={rightTextStyles}>{data.Description}</AppText>
+              <AppText style={{ ...rightTextStyles, marginLeft: 0 }}>
+                {data.Description}
+              </AppText>
             </div>
 
             {isMyAnnouncement && (
@@ -155,22 +168,48 @@ export const ShowSingleAutoData = ({ data }) => {
               >
                 <div className="show_single_auto_container_vendor_data">
                   <Avatar data={userData.ImageUrl} />
-                  <AppText>{userData.Name}</AppText>
+                  <AppText
+                    style={{
+                      fontSize:
+                        STYLES.WINDOW_WIDTH() > 800
+                          ? 18
+                          : STYLES.WINDOW_WIDTH() > 500
+                          ? 16
+                          : 14,
+                    }}
+                  >
+                    {userData.Name}
+                  </AppText>
                 </div>
 
                 <div className="show_single_auto_container_vendor_btn">
-                  <AppButton
-                    onClick={() =>
-                      RedirectToChat(
-                        data.UserId,
-                        data.CountAutoId,
-                        userData,
-                        data
-                      )
-                    }
-                  >
-                    Написать продавцу
-                  </AppButton>
+                  {STYLES.WINDOW_WIDTH() > 500 ? (
+                    <AppButton
+                      onClick={() =>
+                        RedirectToChat(
+                          data.UserId,
+                          data.CountAutoId,
+                          userData,
+                          data
+                        )
+                      }
+                    >
+                      Написать продавцу
+                    </AppButton>
+                  ) : (
+                    <AppButtonSmall
+                      onClick={() =>
+                        RedirectToChat(
+                          data.UserId,
+                          data.CountAutoId,
+                          userData,
+                          data
+                        )
+                      }
+                    >
+                      Написать продавцу
+                    </AppButtonSmall>
+                  )}
                 </div>
               </div>
             )}

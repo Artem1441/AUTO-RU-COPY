@@ -89,3 +89,8 @@
   width: 100%;
   align-items: center;
 }
+@media (max-width: 500px) {
+  .chat_header_container {
+    margin-left: 10px;
+  }
+}

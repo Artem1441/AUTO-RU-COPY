@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { storage } from "../index";
 import { AppInput } from "./../components/UI/input/AppInput";
 import { AppButton } from "./../components/UI/button/AppButton";
+import { AppButtonSmall } from "../components/UI/button/AppButtonSmall";
+import { STYLES } from "../utils/styles";
 
 export const MultiplyImageUpload = ({ dispatch, saveFunc, dependences }) => {
   const [uniqId, setUniqId] = useState("");
@@ -90,13 +92,24 @@ export const MultiplyImageUpload = ({ dispatch, saveFunc, dependences }) => {
         />
       ))} */}
 
-      <AppButton
-        onClick={() => {
-          document.getElementById("fileInputMultiply").click();
-        }}
-      >
-        Выбрать фотографии
-      </AppButton>
+      {STYLES.WINDOW_WIDTH() > 480 ? (
+        <AppButton
+          onClick={() => {
+            document.getElementById("fileInputMultiply").click();
+          }}
+        >
+          Выбрать фотографии
+        </AppButton>
+      ) : (
+        <AppButtonSmall
+          onClick={() => {
+            document.getElementById("fileInputMultiply").click();
+          }}
+        >
+          Выбрать фотографии
+        </AppButtonSmall>
+      )}
+
       <AppInput
         type="file"
         id="fileInputMultiply"

@@ -22,3 +22,10 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 360px) {
+  .appModalContent {
+    padding: 10px;
+    min-width: 220px;
+  }
+}

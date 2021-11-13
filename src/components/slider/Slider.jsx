@@ -5,8 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppButtonSmall } from "../UI/button/AppButtonSmall";
 import { clientFilterImagesArrAction } from "./../../store/client/addAutoReducer";
 import { STYLES } from "../../utils/styles";
+import trash from "../../assets/img/trashIcon.svg";
 
-export default function Slider({ imagesArr, isDelete = true }) {
+export default function Slider({
+  imagesArr,
+  isDelete = true,
+  isHugeSlider = false,
+}) {
   const dispatch = useDispatch();
   const [slideIndex, setSlideIndex] = useState(1);
   const [isLoad, setIsLoad] = useState(false);
@@ -40,7 +45,7 @@ export default function Slider({ imagesArr, isDelete = true }) {
   };
 
   return (
-    <div className="container-slider">
+    <div className={isHugeSlider ? "container-slider-big" : "container-slider"}>
       {imagesArr.map((url, index) => {
         return (
           <div
@@ -81,7 +86,15 @@ export default function Slider({ imagesArr, isDelete = true }) {
               dispatch(clientFilterImagesArrAction(imagesArr[slideIndex - 1]))
             }
           >
-            Удалить фото
+            {STYLES.WINDOW_WIDTH > 500 ? (
+              "Удалить фото"
+            ) : (
+              <img
+                src={trash}
+                alt="delete"
+                style={{ width: STYLES.ICON_SIZE_SMALL }}
+              />
+            )}
           </AppButtonSmall>
         )}
       </div>

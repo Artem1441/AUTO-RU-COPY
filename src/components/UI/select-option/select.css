@@ -7,6 +7,7 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  margin: 3px;
 }
 
 .appSelectItemActive {
@@ -14,8 +15,23 @@
 }
 
 .appSelect {
-    padding: 20px;
+  padding: 20px;
   display: flex;
   width: 100%;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .appSelectItem {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .appSelectItem {
+    padding: 8px;
+    font-size: 12px;
+  }
 }

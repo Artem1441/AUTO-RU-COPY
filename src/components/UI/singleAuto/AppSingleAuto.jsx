@@ -42,6 +42,15 @@ export const AppSingleAuto = ({ autoData }) => {
     marginLeft: 10,
   };
 
+  const adaptiveFontSizeForHugeText =
+    STYLES.WINDOW_WIDTH() > 780
+      ? 18
+      : STYLES.WINDOW_WIDTH() > 600
+      ? 16
+      : STYLES.WINDOW_WIDTH() > 500
+      ? 14
+      : 12;
+
   useEffect(() => {
     ReadAllInFirebaseWithThreeQueriesV2(
       "AutoModels",
@@ -98,14 +107,22 @@ export const AppSingleAuto = ({ autoData }) => {
 
           <div className="appSingleAutoBlockInfo">
             <div className="appSingleAutoBlockInfoMain">
-              <AppTitle>
+              <AppTitle
+                style={{
+                  fontSize: adaptiveFontSizeForHugeText,
+                }}
+              >
                 {mark} {model} {generation}
               </AppTitle>
               <div className="appSingleAutoBlockInfoMainPrice">
-                <AppText>
+                <AppText
+                  style={{
+                    fontSize: adaptiveFontSizeForHugeText,
+                  }}
+                >
                   {String(autoData.Price)
                     .replace(/\s/g, "")
-                    .replace(/(\d)(?=(\d{3})+$)/g, "$1 ")}
+                    .replace(/(\d)(?=(\d{3})+$)/g, "$1 ")}{" "}
                   руб
                 </AppText>
               </div>
@@ -113,54 +130,67 @@ export const AppSingleAuto = ({ autoData }) => {
 
             <div className="appSingleAutoBlockInfoOther">
               <div className="appSingleAutoBlockInfoOtherMain">
-                <AppText>{autoData.Year}</AppText>
-                <AppText>{autoData.Mileage} км</AppText>
+                <AppText
+                  style={{
+                    fontSize: adaptiveFontSizeForHugeText,
+                  }}
+                >
+                  {autoData.Year} {STYLES.WINDOW_WIDTH() < 400 && "год"}
+                </AppText>
+                <AppText
+                  style={{
+                    fontSize: adaptiveFontSizeForHugeText,
+                  }}
+                >
+                  {autoData.Mileage} км
+                </AppText>
               </div>
-
-              <div className="appSingleAutoBlockInfoOtherComain">
-                <div className="appSingleAutoBlockInfoOtherComainBlock">
-                  <AppText style={textStyles}>
-                    Мощность:
-                    <AppText style={textInTextStyles}>
-                      {autoData.Power} л.с
+              {STYLES.WINDOW_WIDTH() > 780 && (
+                <div className="appSingleAutoBlockInfoOtherComain">
+                  <div className="appSingleAutoBlockInfoOtherComainBlock">
+                    <AppText style={textStyles}>
+                      Мощность:
+                      <AppText style={textInTextStyles}>
+                        {autoData.Power} л.с
+                      </AppText>
                     </AppText>
-                  </AppText>
-                </div>
+                  </div>
 
-                <div className="appSingleAutoBlockInfoOtherComainBlock">
-                  <AppText style={textStyles}>
-                    Кузов:
-                    <AppText style={textInTextStyles}>{typeOfBody}</AppText>
-                  </AppText>
-                </div>
-
-                <div className="appSingleAutoBlockInfoOtherComainBlock">
-                  <AppText style={textStyles}>
-                    Привод:
-                    <AppText style={textInTextStyles}>
-                      {autoData.DriveUnit}
+                  <div className="appSingleAutoBlockInfoOtherComainBlock">
+                    <AppText style={textStyles}>
+                      Кузов:
+                      <AppText style={textInTextStyles}>{typeOfBody}</AppText>
                     </AppText>
-                  </AppText>
-                </div>
+                  </div>
 
-                <div className="appSingleAutoBlockInfoOtherComainBlock">
-                  <AppText style={textStyles}>
-                    Коробка:
-                    <AppText style={textInTextStyles}>
-                      {autoData.Transmission}
+                  <div className="appSingleAutoBlockInfoOtherComainBlock">
+                    <AppText style={textStyles}>
+                      Привод:
+                      <AppText style={textInTextStyles}>
+                        {autoData.DriveUnit}
+                      </AppText>
                     </AppText>
-                  </AppText>
-                </div>
+                  </div>
 
-                <div className="appSingleAutoBlockInfoOtherComainBlock">
-                  <AppText style={textStyles}>
-                    Мотор:
-                    <AppText style={textInTextStyles}>
-                      {autoData.TypeOfMotor}
+                  <div className="appSingleAutoBlockInfoOtherComainBlock">
+                    <AppText style={textStyles}>
+                      Коробка:
+                      <AppText style={textInTextStyles}>
+                        {autoData.Transmission}
+                      </AppText>
                     </AppText>
-                  </AppText>
+                  </div>
+
+                  <div className="appSingleAutoBlockInfoOtherComainBlock">
+                    <AppText style={textStyles}>
+                      Мотор:
+                      <AppText style={textInTextStyles}>
+                        {autoData.TypeOfMotor}
+                      </AppText>
+                    </AppText>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -6,8 +6,9 @@ import { getAllCarsFromDBRefreshAction } from "./../../../store/client/getAutoRe
 import { AppButtonSmall } from "./../button/AppButtonSmall";
 import "./filter.css";
 import { AppTitle } from "./../titles/AppTitle";
+import { AppText } from "../text/AppText";
 
-export const AppFilterPanel = ({ name }) => {
+export const AppFilterPanel = ({ name, isLoad }) => {
   const dispatch = useDispatch();
 
   const sortBy = (type, descAsc) => {
@@ -25,21 +26,35 @@ export const AppFilterPanel = ({ name }) => {
       <div className="container appFilterTitle">
         <AppTitle>{name}</AppTitle>
       </div>
-      <div className="container appFilterContainer">
-        Сортировать по:
-        <AppButtonSmall onClick={() => sortBy("Price", "desc")}>
-          цене (убывание)
-        </AppButtonSmall>
-        <AppButtonSmall onClick={() => sortBy("Price", "asc")}>
-          цене (возрастание)
-        </AppButtonSmall>
-        <AppButtonSmall onClick={() => sortBy("dateAdded", "desc")}>
-          дате загрузки (убывание)
-        </AppButtonSmall>
-        <AppButtonSmall onClick={() => sortBy("dateAdded", "asc")}>
-          дате загрузки (возрастание)
-        </AppButtonSmall>
-      </div>
+      {isLoad && (
+        <div className="container appFilterSort">
+          <AppText>Сортировать по:</AppText>
+        </div>
+      )}
+      {isLoad && (
+        <div className="container appFilterContainer">
+          <div className="appFilterContainerBtn">
+            <AppButtonSmall onClick={() => sortBy("Price", "desc")}>
+              цене (убывание)
+            </AppButtonSmall>
+          </div>
+          <div className="appFilterContainerBtn">
+            <AppButtonSmall onClick={() => sortBy("Price", "asc")}>
+              цене (возрастание)
+            </AppButtonSmall>
+          </div>
+          <div className="appFilterContainerBtn">
+            <AppButtonSmall onClick={() => sortBy("dateAdded", "desc")}>
+              дате загрузки (убывание)
+            </AppButtonSmall>
+          </div>
+          <div className="appFilterContainerBtn">
+            <AppButtonSmall onClick={() => sortBy("dateAdded", "asc")}>
+              дате загрузки (возрастание)
+            </AppButtonSmall>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -116,7 +116,7 @@ export const UpdateNewAdminGenerationModel = () => {
       <div className="add_auto_marks">
         {modelsArr.length > 0 ? (
           modelsArr.map((model, index) => {
-            console.log(model, modelId);
+            // console.log(model, modelId);
             return (
               <AppModel
                 key={index}
@@ -203,7 +203,7 @@ export const UpdateNewAdminGeneration = () => {
       <div className="add_auto_marks">
         {generationsArr.length > 0 ? (
           generationsArr.map((generation, index) => {
-            console.log(generation);
+            // console.log(generation);
             return (
               <AppGeneration
                 key={index}

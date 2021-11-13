@@ -27,6 +27,7 @@ import backIcon from "../../assets/img/backIcon.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import { Avatar } from "../avatar/Avatar";
 import { AppTitle } from "../UI/titles/AppTitle";
+import { AppButtonSmall } from "../UI/button/AppButtonSmall";
 
 export const Chat = ({ myId, vendorId, autoId }) => {
   const dispatch = useDispatch();
@@ -200,14 +201,16 @@ export const Chat = ({ myId, vendorId, autoId }) => {
       <div className="chat_header">
         <img
           src={backIcon}
-          style={{ width: 40 }}
+          style={{ width: STYLES.WINDOW_WIDTH > 500 ? 40 : 25 }}
           onClick={() => history.goBack()}
           className="chat_header_back"
         />
         <div className="container">
           <div className="chat_header_container">
             <Avatar data={location.state.imgUrl} />
-            <AppTitle>{location.state.name}</AppTitle>
+            <AppTitle style={{ fontSize: STYLES.WINDOW_WIDTH > 500 ? 32 : 20 }}>
+              {location.state.name}
+            </AppTitle>
           </div>
         </div>
         <span></span>
@@ -263,7 +266,11 @@ export const Chat = ({ myId, vendorId, autoId }) => {
             </div>
 
             <div className="chat_write_btn">
-              <AppButton onClick={sendMessage}>Отправить</AppButton>
+              {STYLES.WINDOW_WIDTH() > 500 ? (
+                <AppButton onClick={sendMessage}>Отправить</AppButton>
+              ) : (
+                <AppButtonSmall onClick={sendMessage}>Отправить</AppButtonSmall>
+              )}
             </div>
           </div>
         </div>
