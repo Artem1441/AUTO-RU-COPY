@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "./app.css";
+import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { AppLoader } from "./components/UI/loader/AppLoader";
