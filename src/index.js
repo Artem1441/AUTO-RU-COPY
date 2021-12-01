@@ -7,16 +7,6 @@ import firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
 
-// firebase.initializeApp({
-//   apiKey: "AIzaSyBzidhkhTByJwA5N5uZL3xjnCo3XaOvmLg",
-//   authDomain: "social-network-af03c.firebaseapp.com",
-//   projectId: "social-network-af03c",
-//   storageBucket: "social-network-af03c.appspot.com",
-//   messagingSenderId: "1083427591580",
-//   appId: "1:1083427591580:web:4ffd91437f59ae75596459",
-//   measurementId: "G-6SLDJDER4N",
-// });
-
 firebase.initializeApp({
   apiKey: "AIzaSyCTlW3U20QDWa61qNAFktWVIvbyrPGn9Zw",
   authDomain: "testrealtimedb-9047b.firebaseapp.com",
